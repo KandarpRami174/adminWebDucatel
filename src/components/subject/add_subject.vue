@@ -113,7 +113,7 @@
           </div>
         </div>
       </div>
-      <masterfoot></masterfoot>
+      <masterfoot class="pos-bottom"></masterfoot>
     </div>
   </main>
 </template>
@@ -136,4 +136,10 @@ export default {
 </script>
 
 <style>
+.pos-bottom {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
 </style>

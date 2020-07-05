@@ -15,6 +15,7 @@
               </ol>
             </div>
             <div class="col s2 m6 l6">
+              <a class="btn waves-effect waves-light breadcrumbs-btn right gradient-45deg-green-teal ml-2">Download</a>
               <router-link
                 to="/addSubject"
                 class="btn waves-effect waves-light gradient-45deg-light-blue-cyan breadcrumbs-btn right"
@@ -32,7 +33,6 @@
               <div class="col s12 m12 l12">
                 <div id="button-trigger" class="card card card-default scrollspy">
                   <div class="card-content">
-                    <h4 class="card-title">DataTables example</h4>
                     <div class="row">
                       <div class="col s12">
                         <div id="data-table-simple_wrapper" class="dataTables_wrapper">
