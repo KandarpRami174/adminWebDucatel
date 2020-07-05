@@ -1,7 +1,7 @@
 <template>
   <!-- BEGIN: SideNav-->
   <aside
-    class="sidenav-main nav-expanded nav-lock nav-collapsible sidenav-light sidenav-active-square"
+    class="sidenav-main nav-expanded nav-lock nav-collapsible sidenav-light sidenav-active-rounded"
   >
     <div class="brand-sidebar">
       <h1 class="logo-wrapper">
@@ -87,6 +87,20 @@
       <li>
         <router-link to="/tutorReq" active-class="active" tag="a">
           <i class="material-icons dp48">trending_up</i>Register Request
+        </router-link>
+      </li>
+      <li class="navigation-header">
+        <a class="navigation-header-text">Others</a>
+        <i class="navigation-header-icon material-icons">more_horiz</i>
+      </li>
+      <li>
+        <router-link to="/location" active-class="active" tag="a">
+          <i class="material-icons dp48">add_location</i>Location
+        </router-link>
+      </li>
+      <li>
+        <router-link to="/subscriptions" active-class="active" tag="a">
+          <i class="material-icons dp48">attach_money</i>Subscriptions
         </router-link>
       </li>
     </ul>

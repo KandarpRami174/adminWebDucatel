@@ -48,28 +48,36 @@ export default {
     document.body.appendChild(customizerJS)
 
     // DataTable js
-    let DataTableJS = document.createElement('script')
-    DataTableJS.setAttribute(
-      'src',
-      'http://webducatel.assets.fuegoinfotech.com/app-assets/vendors/data-tables/js/jquery.dataTables.min.js'
-    )
-    document.body.appendChild(DataTableJS)
+    // let DataTableJS = document.createElement('script')
+    // DataTableJS.setAttribute(
+    //   'src',
+    //   'http://webducatel.assets.fuegoinfotech.com/app-assets/vendors/data-tables/js/jquery.dataTables.min.js'
+    // )
+    // document.body.appendChild(DataTableJS)
     
-    // responsive js
-    let responsiveJS = document.createElement('script')
-    responsiveJS.setAttribute(
-      'src',
-      'http://webducatel.assets.fuegoinfotech.com/app-assets/vendors/data-tables/extensions/responsive/js/dataTables.responsive.min.js'
-    )
-    document.body.appendChild(responsiveJS)
+    // // responsive js
+    // let responsiveJS = document.createElement('script')
+    // responsiveJS.setAttribute(
+    //   'src',
+    //   'http://webducatel.assets.fuegoinfotech.com/app-assets/vendors/data-tables/extensions/responsive/js/dataTables.responsive.min.js'
+    // )
+    // document.body.appendChild(responsiveJS)
     
-    // DataSelect js
-    let DataSelectJS = document.createElement('script')
-    DataSelectJS.setAttribute(
+    // // DataSelect js
+    // let DataSelectJS = document.createElement('script')
+    // DataSelectJS.setAttribute(
+    //   'src',
+    //   'http://webducatel.assets.fuegoinfotech.com/app-assets/vendors/data-tables/js/dataTables.select.min.js'
+    // )
+    // document.body.appendChild(DataSelectJS)
+    
+    // Modals js
+    let ModalsJS = document.createElement('script')
+    ModalsJS.setAttribute(
       'src',
-      'http://webducatel.assets.fuegoinfotech.com/app-assets/vendors/data-tables/js/dataTables.select.min.js'
+      'http://webducatel.assets.fuegoinfotech.com/app-assets/js/scripts/advance-ui-modals.js'
     )
-    document.body.appendChild(DataSelectJS)
+    document.body.appendChild(ModalsJS)
   },
 };
 </script>

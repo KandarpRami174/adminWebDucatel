@@ -1,17 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="https://webducatel.assets.fuegoinfotech.com/app-assets/images/logo/Fab.png">
-    <title><%= htmlWebpackPlugin.options.title %></title>
-  </head>
-  <body class="vertical-layout vertical-menu-collapsible page-header-dark vertical-modern-menu preload-transitions " data-open="click" data-menu="vertical-modern-menu">
-    <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="icon" href="https://webducatel.assets.fuegoinfotech.com/app-assets/images/logo/Fab.png">
+  <title><%= htmlWebpackPlugin.options.title %></title>
+  <style>
+    .master-scroll {
+      overflow-y: scroll !important;
+      scrollbar-color: rgba(12, 0, 80, 0.2) rgb(255, 255, 255) !important;
+      scrollbar-width: thin !important;
+    }
+  </style>
+</head>
+
+<body class="vertical-layout vertical-menu-collapsible page-header-dark vertical-modern-menu preload-transitions master-scroll "
+  data-open="click" data-menu="vertical-modern-menu">
+  <noscript>
+    <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
+      Please enable it to continue.</strong>
+  </noscript>
+  <div id="app"></div>
+  <!-- built files will be auto injected -->
+</body>
+
 </html>

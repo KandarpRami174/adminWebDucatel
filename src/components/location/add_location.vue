@@ -16,9 +16,9 @@
                   </h5>
                   <ol class="breadcrumbs mb-0">
                     <li class="breadcrumb-item">
-                      <router-link to="/level" tag="a">Level</router-link>
+                      <router-link to="/location" tag="a">State</router-link>
                     </li>
-                    <li class="breadcrumb-item active">Add New Level</li>
+                    <li class="breadcrumb-item active">Add New State</li>
                   </ol>
                 </div>
               </div>
@@ -31,12 +31,12 @@
                   <div class="row">
                     <div class="input-field col s12">
                       <input type="text" id="fn" />
-                      <label for="fn">Name</label>
+                      <label for="fn">State Name</label>
                     </div>
                   </div>
                   <div class="row">
                     <div class="input-field col s12">
-                      <router-link to="/level" class="btn cyan waves-effect waves-light right">
+                      <router-link to="/location" class="btn cyan waves-effect waves-light right">
                         Submit
                         <i class="material-icons right">send</i>
                       </router-link>

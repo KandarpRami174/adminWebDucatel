@@ -4,6 +4,8 @@ import Subject from '../components/subject/subject_list.vue'
 import addSubject from '../components/subject/add_subject.vue'
 import Level from '../components/level/level_list.vue'
 import addLevel from '../components/level/add_level.vue'
+import Location from '../components/location/location_list.vue'
+import addLocation from '../components/location/add_location.vue'
 
 export const routes = [
     { path: '/', component: Login },
@@ -12,4 +14,6 @@ export const routes = [
     { path: '/addSubject', component: addSubject },
     { path: '/level', component: Level },
     { path: '/addLevel', component: addLevel },
+    { path: '/location', component: Location },
+    { path: '/addLocation', component: addLocation },
 ]
