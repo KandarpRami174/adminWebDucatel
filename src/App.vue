@@ -93,7 +93,10 @@ export default {
 @import 'http://webducatel.assets.fuegoinfotech.com/app-assets/vendors/data-tables/extensions/responsive/css/responsive.dataTables.min.css';
 @import 'http://webducatel.assets.fuegoinfotech.com/app-assets/vendors/data-tables/css/select.dataTables.min.css';
 @import 'http://webducatel.assets.fuegoinfotech.com/app-assets/css/pages/data-tables.css';
+@import 'http://webducatel.assets.fuegoinfotech.com/app-assets/css/pages/pricing.css';
 /* 
+@import 'http://webducatel.assets.fuegoinfotech.com/';
+@import 'http://webducatel.assets.fuegoinfotech.com/';
 @import 'http://webducatel.assets.fuegoinfotech.com/';
 @import 'http://webducatel.assets.fuegoinfotech.com/'; */
 </style>

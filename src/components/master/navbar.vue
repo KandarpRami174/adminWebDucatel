@@ -99,7 +99,7 @@
         </router-link>
       </li>
       <li>
-        <router-link to="/subscriptions" active-class="active" tag="a">
+        <router-link to="/subscription" active-class="active" tag="a">
           <i class="material-icons dp48">attach_money</i>Subscriptions
         </router-link>
       </li>
