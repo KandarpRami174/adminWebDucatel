@@ -162,9 +162,9 @@ import Nav from "../master/navbar.vue";
 import Foot from "../master/footer.vue";
 
 export default {
-  name: "Location",
+  name: "Subscriptions",
   created() {
-    document.title = "Location";
+    document.title = "Subscriptions";
   },
   components: {
     masterHead: Head,

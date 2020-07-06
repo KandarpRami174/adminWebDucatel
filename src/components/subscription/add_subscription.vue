@@ -86,9 +86,9 @@ import Head from "../master/head.vue";
 import Nav from "../master/navbar.vue";
 import Foot from "../master/footer.vue";
 export default {
-  name: "Add New Level",
+  name: "Add Subscription",
   created() {
-    document.title = "Add New Level";
+    document.title = "Add Subscription";
   },
   components: {
     masterHead: Head,
