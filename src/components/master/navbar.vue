@@ -29,7 +29,7 @@
         </router-link>
       </li>
       <li>
-        <router-link to="/user" active-class="active" tag="a">
+        <router-link to="/adminUser" active-class="active" tag="a">
           <i class="material-icons dp48">person_add</i>Users
         </router-link>
       </li>
@@ -45,6 +45,34 @@
       <li>
         <router-link to="/level" active-class="active" tag="a">
           <i class="material-icons dp48">trending_up</i>Level
+        </router-link>
+      </li>
+      <li class="navigation-header">
+        <a class="navigation-header-text">Others</a>
+        <i class="navigation-header-icon material-icons">more_horiz</i>
+      </li>
+      <li>
+        <router-link to="/location" active-class="active" tag="a">
+          <i class="material-icons dp48">add_location</i>Location
+        </router-link>
+      </li>
+      <li>
+        <router-link to="/subscription" active-class="active" tag="a">
+          <i class="material-icons dp48">attach_money</i>Subscriptions
+        </router-link>
+      </li>
+      <li class="navigation-header">
+        <a class="navigation-header-text">Blog</a>
+        <i class="navigation-header-icon material-icons">more_horiz</i>
+      </li>
+      <li>
+        <router-link to="/blogCat" active-class="active" tag="a">
+          <i class="material-icons dp48">playlist_add</i>Category
+        </router-link>
+      </li>
+      <li>
+        <router-link to="/blogs" active-class="active" tag="a">
+          <i class="material-icons dp48">art_track</i>Blog
         </router-link>
       </li>
       <li class="navigation-header">
@@ -87,20 +115,6 @@
       <li>
         <router-link to="/tutorReq" active-class="active" tag="a">
           <i class="material-icons dp48">trending_up</i>Register Request
-        </router-link>
-      </li>
-      <li class="navigation-header">
-        <a class="navigation-header-text">Others</a>
-        <i class="navigation-header-icon material-icons">more_horiz</i>
-      </li>
-      <li>
-        <router-link to="/location" active-class="active" tag="a">
-          <i class="material-icons dp48">add_location</i>Location
-        </router-link>
-      </li>
-      <li>
-        <router-link to="/subscription" active-class="active" tag="a">
-          <i class="material-icons dp48">attach_money</i>Subscriptions
         </router-link>
       </li>
     </ul>

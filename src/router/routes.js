@@ -8,6 +8,8 @@ import Location from '../components/location/location_list.vue'
 import addLocation from '../components/location/add_location.vue'
 import Subscription from '../components/subscription/subscription_list.vue'
 import addSubscription from '../components/subscription/add_subscription.vue'
+import adminUser from '../components/admin_user/user_list.vue'
+import addAdminUser from '../components/admin_user/add_user.vue'
 
 export const routes = [
     { path: '/', component: Login },
@@ -20,4 +22,6 @@ export const routes = [
     { path: '/addLocation', component: addLocation },
     { path: '/subscription', component: Subscription },
     { path: '/addSubscription', component: addSubscription },
+    { path: '/adminUser', component: adminUser },
+    { path: '/addAdminUser', component: addAdminUser },
 ]

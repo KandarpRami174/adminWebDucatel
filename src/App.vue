@@ -78,6 +78,22 @@ export default {
       'http://webducatel.assets.fuegoinfotech.com/app-assets/js/scripts/advance-ui-modals.js'
     )
     document.body.appendChild(ModalsJS)
+    
+    // Users js
+    let UsersJS = document.createElement('script')
+    UsersJS.setAttribute(
+      'src',
+      'http://webducatel.assets.fuegoinfotech.com/app-assets/js/scripts/page-users.js'
+    )
+    document.body.appendChild(UsersJS)
+    
+    // select2 js
+    let select2JS = document.createElement('script')
+    select2JS.setAttribute(
+      'src',
+      'http://webducatel.assets.fuegoinfotech.com/app-assets/vendors/select2/select2.full.min.js'
+    )
+    document.body.appendChild(select2JS)
   },
 };
 </script>
@@ -94,6 +110,9 @@ export default {
 @import 'http://webducatel.assets.fuegoinfotech.com/app-assets/vendors/data-tables/css/select.dataTables.min.css';
 @import 'http://webducatel.assets.fuegoinfotech.com/app-assets/css/pages/data-tables.css';
 @import 'http://webducatel.assets.fuegoinfotech.com/app-assets/css/pages/pricing.css';
+@import 'http://webducatel.assets.fuegoinfotech.com/app-assets/css/pages/page-users.css';
+@import 'http://webducatel.assets.fuegoinfotech.com/app-assets/vendors/select2/select2.min.css';
+@import 'http://webducatel.assets.fuegoinfotech.com/app-assets/vendors/select2/select2-materialize.css';
 /* 
 @import 'http://webducatel.assets.fuegoinfotech.com/';
 @import 'http://webducatel.assets.fuegoinfotech.com/';
