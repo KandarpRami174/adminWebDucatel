@@ -86,9 +86,9 @@ import Nav from "../master/navbar.vue";
 import Foot from "../master/footer.vue";
 
 export default {
-  name: "Location",
+  name: "Add Admin User",
   created() {
-    document.title = "Location";
+    document.title = "Add Admin User";
   },
   components: {
     masterHead: Head,
