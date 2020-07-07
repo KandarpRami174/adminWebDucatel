@@ -94,6 +94,14 @@ export default {
       'http://webducatel.assets.fuegoinfotech.com/app-assets/vendors/select2/select2.full.min.js'
     )
     document.body.appendChild(select2JS)
+    
+    // formEditor js
+    let formEditorJS = document.createElement('script')
+    formEditorJS.setAttribute(
+      'src',
+      'http://webducatel.assets.fuegoinfotech.com/app-assets/js/scripts/form-editor.js'
+    )
+    document.body.appendChild(formEditorJS)
   },
 };
 </script>
@@ -113,7 +121,12 @@ export default {
 @import 'http://webducatel.assets.fuegoinfotech.com/app-assets/css/pages/page-users.css';
 @import 'http://webducatel.assets.fuegoinfotech.com/app-assets/vendors/select2/select2.min.css';
 @import 'http://webducatel.assets.fuegoinfotech.com/app-assets/vendors/select2/select2-materialize.css';
+@import 'http://webducatel.assets.fuegoinfotech.com/app-assets/vendors/quill/katex.min.css';
+@import 'http://webducatel.assets.fuegoinfotech.com/app-assets/vendors/quill/monokai-sublime.min.css';
+@import 'http://webducatel.assets.fuegoinfotech.com/app-assets/vendors/quill/quill.snow.css';
+@import 'http://webducatel.assets.fuegoinfotech.com/app-assets/vendors/quill/quill.bubble.css';
 /* 
+@import 'http://webducatel.assets.fuegoinfotech.com/';
 @import 'http://webducatel.assets.fuegoinfotech.com/';
 @import 'http://webducatel.assets.fuegoinfotech.com/';
 @import 'http://webducatel.assets.fuegoinfotech.com/';

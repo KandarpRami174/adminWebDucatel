@@ -10,6 +10,10 @@ import Subscription from '../components/subscription/subscription_list.vue'
 import addSubscription from '../components/subscription/add_subscription.vue'
 import adminUser from '../components/admin_user/user_list.vue'
 import addAdminUser from '../components/admin_user/add_user.vue'
+import blogCategory from '../components/blog/category.vue'
+import addBlogCat from '../components/blog/addCategory.vue'
+import Blogs from '../components/blog/blogs.vue'
+import addBlogs from '../components/blog/addBlog.vue'
 
 export const routes = [
     { path: '/', component: Login },
@@ -24,4 +28,8 @@ export const routes = [
     { path: '/addSubscription', component: addSubscription },
     { path: '/adminUser', component: adminUser },
     { path: '/addAdminUser', component: addAdminUser },
+    { path: '/blogCat', component: blogCategory },
+    { path: '/addBlogCat', component: addBlogCat },
+    { path: '/blogs', component: Blogs },
+    { path: '/addBlog', component: addBlogs },
 ]
