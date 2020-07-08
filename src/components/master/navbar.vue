@@ -80,13 +80,8 @@
         <i class="navigation-header-icon material-icons">more_horiz</i>
       </li>
       <li>
-        <router-link to="/parent" active-class="active" tag="a">
+        <router-link to="/parents" active-class="active" tag="a">
           <i class="material-icons dp48">person</i>Parent
-        </router-link>
-      </li>
-      <li>
-        <router-link to="/parentStu" active-class="active" tag="a">
-          <i class="material-icons dp48">people</i>Parent's Students
         </router-link>
       </li>
       <li class="navigation-header">
@@ -96,11 +91,6 @@
       <li>
         <router-link to="/student" active-class="active" tag="a">
           <i class="material-icons dp48">face</i>Student
-        </router-link>
-      </li>
-      <li>
-        <router-link to="/stuParent" active-class="active" tag="a">
-          <i class="material-icons dp48">people_outline</i>Student's Parent
         </router-link>
       </li>
       <li class="navigation-header">
