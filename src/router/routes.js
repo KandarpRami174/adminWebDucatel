@@ -16,6 +16,8 @@ import Blogs from '../components/blog/blogs.vue'
 import addBlogs from '../components/blog/addBlog.vue'
 import Parents from '../components/parent/parent_list.vue'
 import ParentsInfo from '../components/parent/parent_info.vue'
+import Students from '../components/student/student_list.vue'
+import StudentsInfo from '../components/student/student_info.vue'
 
 export const routes = [
     { path: '/', component: Login },
@@ -36,4 +38,6 @@ export const routes = [
     { path: '/addBlog', component: addBlogs },
     { path: '/parents', component: Parents },
     { path: '/parentInfo', component: ParentsInfo },
+    { path: '/students', component: Students },
+    { path: '/StudentInfo', component: StudentsInfo },
 ]

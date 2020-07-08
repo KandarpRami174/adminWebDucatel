@@ -89,7 +89,7 @@
         <i class="navigation-header-icon material-icons">more_horiz</i>
       </li>
       <li>
-        <router-link to="/student" active-class="active" tag="a">
+        <router-link to="/students" active-class="active" tag="a">
           <i class="material-icons dp48">face</i>Student
         </router-link>
       </li>
