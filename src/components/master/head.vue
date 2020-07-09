@@ -47,9 +47,9 @@
           <!-- profile-dropdown-->
           <ul class="dropdown-content" id="profile-dropdown">
             <li>
-              <a class="grey-text text-darken-1" href="#">
+              <router-link class="grey-text text-darken-1" tag="a" to="/">
                 <i class="material-icons">keyboard_tab</i> Logout
-              </a>
+              </router-link>
             </li>
           </ul>
         </div>
