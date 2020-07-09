@@ -68,7 +68,7 @@
                   <div class="card-content">
                     <!-- datatable start -->
                     <div class="responsive-table">
-                      <table id="users-list-datatable" class="table">
+                      <table id="users-list-datatable" class="responsive-table">
                         <thead>
                           <tr>
                             <th>User Name</th>

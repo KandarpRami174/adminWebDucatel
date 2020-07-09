@@ -20,11 +20,11 @@
                 </div>
                 <div class="col s2 m6 l6">
                   <a
-                    class="btn waves-effect waves-light breadcrumbs-btn right gradient-45deg-green-teal ml-2"
+                    class="btn waves-effect waves-light breadcrumbs-btn right gradient-45deg-green-teal ml-2 mt-5"
                   >Download</a>
                   <router-link
                     to="/addLocation"
-                    class="btn waves-effect waves-light gradient-45deg-light-blue-cyan breadcrumbs-btn right"
+                    class="btn waves-effect waves-light gradient-45deg-light-blue-cyan breadcrumbs-btn right mt-5"
                   >
                     <a>Add</a>
                   </router-link>
@@ -33,8 +33,7 @@
             </div>
           </div>
           <!-- State Cards Start -->
-          <br><br>
-          <div class="col s12">
+          <div class="col s12 mt-5">
             <div class="container">
               <div class="row">
                 <div class="col s12 m3 l3 card-width">

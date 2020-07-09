@@ -101,7 +101,7 @@
                   </div>
                   <div class="row">
                     <div class="input-field col s12">
-                      <textarea id="srtCnt" class="materialize-textarea" spellcheck="false"></textarea>
+                      <textarea id="srtCnt" class="materialize-textarea" spellcheck="true"></textarea>
                       <label for="srtCnt">Sort Content</label>
                     </div>
                   </div>

@@ -4,7 +4,7 @@
       <master-head></master-head>
       <master-nav></master-nav>
       <dash-content></dash-content>
-      <masterfoot></masterfoot>
+      <masterfoot class="pos-bottom"></masterfoot>
     </div>
   </main>
 </template>

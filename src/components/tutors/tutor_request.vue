@@ -20,18 +20,17 @@
                 </div>
                 <div class="col s2 m6 l6">
                   <a
-                    class="btn waves-effect waves-light breadcrumbs-btn right gradient-45deg-green-teal ml-2"
+                    class="btn waves-effect waves-light breadcrumbs-btn right gradient-45deg-green-teal ml-2 mt-5"
                   >Download</a>
                   <a
-                    class="btn waves-effect waves-light breadcrumbs-btn right gradient-45deg-red-pink ml-2"
+                    class="btn waves-effect waves-light breadcrumbs-btn right gradient-45deg-red-pink ml-2 mt-5"
                   >Clear Data</a>
                 </div>
               </div>
             </div>
           </div>
           <!-- State Cards Start -->
-          <br />
-          <div class="row">
+          <div class="row mt-5">
             <div class="col s12 m12 l12">
               <div id="responsive-table" class="card card card-default scrollspy">
                 <div class="card-content">
