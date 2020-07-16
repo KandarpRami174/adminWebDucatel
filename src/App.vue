@@ -108,23 +108,23 @@ export default {
 
 <style>
 @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
-@import 'http://webducatel.assets.fuegoinfotech.com/app-assets/vendors/vendors.min.css';
-@import 'http://webducatel.assets.fuegoinfotech.com/app-assets/css/themes/vertical-modern-menu-template/materialize.css';
-@import 'http://webducatel.assets.fuegoinfotech.com/app-assets/css/themes/vertical-modern-menu-template/style.css';
-@import 'http://webducatel.assets.fuegoinfotech.com/app-assets/css/pages/login.css';
-@import 'http://webducatel.assets.fuegoinfotech.com/app-assets/css/custom/custom.css';
-@import 'http://webducatel.assets.fuegoinfotech.com/app-assets/vendors/data-tables/css/jquery.dataTables.min.css';
-@import 'http://webducatel.assets.fuegoinfotech.com/app-assets/vendors/data-tables/extensions/responsive/css/responsive.dataTables.min.css';
-@import 'http://webducatel.assets.fuegoinfotech.com/app-assets/vendors/data-tables/css/select.dataTables.min.css';
-@import 'http://webducatel.assets.fuegoinfotech.com/app-assets/css/pages/data-tables.css';
-@import 'http://webducatel.assets.fuegoinfotech.com/app-assets/css/pages/pricing.css';
-@import 'http://webducatel.assets.fuegoinfotech.com/app-assets/css/pages/page-users.css';
-@import 'http://webducatel.assets.fuegoinfotech.com/app-assets/vendors/select2/select2.min.css';
-@import 'http://webducatel.assets.fuegoinfotech.com/app-assets/vendors/select2/select2-materialize.css';
-@import 'http://webducatel.assets.fuegoinfotech.com/app-assets/vendors/quill/katex.min.css';
-@import 'http://webducatel.assets.fuegoinfotech.com/app-assets/vendors/quill/monokai-sublime.min.css';
-@import 'http://webducatel.assets.fuegoinfotech.com/app-assets/vendors/quill/quill.snow.css';
-@import 'http://webducatel.assets.fuegoinfotech.com/app-assets/vendors/quill/quill.bubble.css';
+@import '../src/app-assets/vendors/vendors.min.css';
+@import '../src/app-assets/css/themes/vertical-modern-menu-template/materialize.css';
+@import '../src/app-assets/css/themes/vertical-modern-menu-template/style.css';
+@import '../src/app-assets/css/pages/login.css';
+@import '../src/app-assets/css/custom/custom.css';
+@import '../src/app-assets/vendors/data-tables/css/jquery.dataTables.min.css';
+@import '../src/app-assets/vendors/data-tables/extensions/responsive/css/responsive.dataTables.min.css';
+@import '../src/app-assets/vendors/data-tables/css/select.dataTables.min.css';
+@import '../src/app-assets/css/pages/data-tables.css';
+@import '../src/app-assets/css/pages/pricing.css';
+@import '../src/app-assets/css/pages/page-users.css';
+@import '../src/app-assets/vendors/select2/select2.min.css';
+@import '../src/app-assets/vendors/select2/select2-materialize.css';
+@import '../src/app-assets/vendors/quill/katex.min.css';
+@import '../src/app-assets/vendors/quill/monokai-sublime.min.css';
+@import '../src/app-assets/vendors/quill/quill.snow.css';
+@import '../src/app-assets/vendors/quill/quill.bubble.css';
 /* 
 @import 'http://webducatel.assets.fuegoinfotech.com/';
 @import 'http://webducatel.assets.fuegoinfotech.com/';
