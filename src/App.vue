@@ -121,7 +121,7 @@ export default {
 @import './app-assets/css/pages/page-users.css';
 @import './app-assets/vendors/select2/select2.min.css';
 @import './app-assets/vendors/select2/select2-materialize.css';
-@import './app-assets/vendors/quill/katex.min.css';
+/* @import './app-assets/vendors/quill/katex.min.css'; */
 @import './app-assets/vendors/quill/monokai-sublime.min.css';
 @import './app-assets/vendors/quill/quill.snow.css';
 @import './app-assets/vendors/quill/quill.bubble.css';
