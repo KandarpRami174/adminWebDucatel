@@ -17,6 +17,9 @@ import Foot from "../master/footer.vue";
 export default {
   name: "Subjects",
   created() {
+    if (localStorage.getItem("userRole") == null) {
+      this.$router.push("/");
+    }
     document.title = "Subject";
   },
   components: {

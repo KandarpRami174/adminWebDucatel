@@ -17,14 +17,17 @@ import Foot from "../master/footer.vue";
 export default {
   name: "Dashboard",
   created() {
+    if (localStorage.getItem("userRole") == null) {
+      this.$router.push("/");
+    }
     document.title = "Dashboard";
   },
   components: {
     masterHead: Head,
     masterNav: Nav,
     dashContent: DashContent,
-    masterfoot: Foot
-  }
+    masterfoot: Foot,
+  },
 };
 </script>
 

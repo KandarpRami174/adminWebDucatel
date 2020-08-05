@@ -7,49 +7,9 @@
         <div class="nav-wrapper">
           <ul class="navbar-list right">
             <li class="dropdown-language">
-              <a
-                class="waves-effect waves-block waves-light translation-button"
-                href="#"
-                data-target="translation-dropdown"
-              >
-                <span class="flag-icon flag-icon-gb"></span>
-              </a>
-            </li>
-            <li>
-              <a
-                class="waves-effect waves-block waves-light profile-button"
-                href="javascript:void(0);"
-                data-target="profile-dropdown"
-              >
-                <span class="avatar-status avatar-online">
-                  <img
-                    src="http://webducatel.assets.fuegoinfotech.com/app-assets/images/avatar/admin.png"
-                    alt="avatar"
-                  />
-                  <i></i>
-                </span>
-              </a>
-            </li>
-          </ul>
-          <!-- translation-button-->
-          <ul class="dropdown-content" id="translation-dropdown">
-            <li class="dropdown-item">
-              <a class="grey-text text-darken-1" href="#!" data-language="en">
-                <i class="flag-icon flag-icon-gb"></i> English
-              </a>
-            </li>
-            <li class="dropdown-item">
-              <a class="grey-text text-darken-1" href="#!" data-language="fr">
-                <i class="flag-icon flag-icon-fr"></i> French
-              </a>
-            </li>
-          </ul>
-          <!-- profile-dropdown-->
-          <ul class="dropdown-content" id="profile-dropdown">
-            <li>
-              <router-link class="grey-text text-darken-1" tag="a" to="/">
-                <i class="material-icons">keyboard_tab</i> Logout
-              </router-link>
+              <button type="button" v-on:click="logout" class="waves-effect waves-light  btn gradient-45deg-red-pink box-shadow-none border-round mr-1 mb-1">
+                Logout
+              </button>
             </li>
           </ul>
         </div>
@@ -59,7 +19,14 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    logout(){
+      localStorage.clear();
+      this.$router.push("/");
+    }
+  }
+};
 </script>
 
 <style>

@@ -125,6 +125,9 @@ import Foot from "../master/footer.vue";
 export default {
   name: "Add New Subjects",
   created() {
+    if (localStorage.getItem("userRole") == null) {
+      this.$router.push("/");
+    }
     document.title = "Add New Subject";
   },
   components: {
