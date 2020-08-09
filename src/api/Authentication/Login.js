@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url = 'webducatel/api/'
+const url = "webducatel/api/";
 
 class LoginAPI {
   //Auth User
@@ -8,11 +8,9 @@ class LoginAPI {
     return new Promise((resolve, reject) => {
       try {
         axios
-          .get(
-            `${url}master/getmaster/${userName}/${userPass}`
-          )
+          .get(`${url}master/getmaster/${userName}/${userPass}`)
           .then((res) => {
-            const data = res.data
+            const data = res.data;
             resolve(data);
           });
       } catch (err) {
