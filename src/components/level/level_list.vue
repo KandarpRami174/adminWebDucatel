@@ -87,7 +87,7 @@
           </div>
         </div>
       </div>
-      <masterfoot></masterfoot>
+      <masterfoot v-bind:class="[isNoData ? fixedFooter : '']"></masterfoot>
     </div>
   </main>
 </template>
@@ -112,13 +112,14 @@ export default {
     masterHead: Head,
     masterNav: Nav,
     masterfoot: Foot,
-    IntersectingCirclesSpinner
+    IntersectingCirclesSpinner,
   },
   data() {
     return {
       getLevel: [],
       levelData: [],
       isLoading: false,
+      fixedFooter: 'pos-bottom',
     };
   },
   methods: {
@@ -126,10 +127,17 @@ export default {
       this.isLoading = true;
       try {
         this.getLevel = await LevelAPI.getLevel();
+        
         if (this.getLevel.statusCode == 200) {
           this.levelData = this.getLevel.level;
+          
           if (this.levelData.length > 0) {
             setTimeout(() => (this.isLoading = false), 3000);
+          } else {
+            setTimeout(
+              () => ((this.isLoading = false), (this.isNoData = true)),
+              3000
+            );
           }
         }
       } catch (err) {
@@ -152,4 +160,10 @@ export default {
 </script>
 
 <style>
+.pos-bottom {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
 </style>
