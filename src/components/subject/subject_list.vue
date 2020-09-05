@@ -75,6 +75,7 @@
                               <img
                                 v-bind:src="'http://assetsmaster.fuegoinfotech.com/webducatel/uploadBase/subImages/'+data.subImage"
                                 width="150"
+                                style="border-radius: 10px; box-shadow: 2px 3px 4px #c4c4c4;"
                               />
                             </td>
                             <td>{{data.subTitle}}</td>

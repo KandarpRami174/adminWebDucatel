@@ -34,6 +34,17 @@
                   class="center-content"
                   v-if="isLoading"
                 />
+                <div
+                  class="card-alert card gradient-45deg-light-blue-cyan offset-s3"
+                  v-if="isLoading && isFirstLoad"
+                >
+                  <div class="card-content white-text">
+                    <p>
+                      <i class="material-icons">info_outline</i> Info : Sometime it takes time to save/update data, data under encryption
+                    </p>
+                  </div>
+                </div>
+
                 <form
                   @submit.prevent="saveSubject"
                   enctype="multipart/form-data"
@@ -148,6 +159,12 @@ export default {
     }
     document.title = "Add New Subject";
     this.loadLevelData();
+
+    if (sessionStorage.getItem("edit_subjetID") != null) {
+      this.isLoading = true;
+      this.isFirstLoad = true;
+      this.loadData();
+    }
   },
   components: {
     masterHead: Head,
@@ -170,9 +187,44 @@ export default {
       showUserLevelID: [],
       imageUrl: null,
       image: "",
+      resData: [],
+      resLvData: [],
+      subjectID: "",
+      isFirstLoad: false
     };
   },
   methods: {
+    async loadData() {
+      this.subjectID = sessionStorage.getItem("edit_subjetID");
+      this.resData = await SubjectAPI.getSubjectByID(this.subjectID);
+      if (this.resData.statusCode == 200) {
+        this.levelSelected = true;
+        this.isFileSelected = true;
+        this.subjectName = this.resData.subject.subTitle;
+        this.imageUrl = `http://assetsmaster.fuegoinfotech.com/webducatel/uploadBase/subImages/${this.resData.subject.subImage}`;
+        const subLvArray = this.resData.subject.subLevelID;
+        subLvArray.forEach((element) => {
+          console.log(element);
+          this.loadLvIDData(element);
+        });
+      }
+    },
+    async loadLvIDData(lvID) {
+      this.resLvData = await LevelAPI.getLevelID(lvID);
+      if (this.resLvData.statusCode == 200) {
+        this.showUserLevel.push(`${this.resLvData.level.levTitle}`);
+        this.showUserLevelID.push(`${this.resLvData.level._id}`);
+
+        this.showUserLevel = [...new Set(this.showUserLevel)];
+        this.showUserLevelID = [...new Set(this.showUserLevelID)];
+
+        if (this.showUserLevel.length > 0 && this.showUserLevelID.length > 0) {
+          this.levelSelected = true;
+          this.isLoading = false;
+          this.isFirstLoad = false;
+        }
+      }
+    },
     onFileSelect() {
       this.isFileSelected = true;
       const files = event.target.files[0];
@@ -209,7 +261,7 @@ export default {
 
         this.showUserLevel = [...new Set(this.showUserLevel)];
         this.showUserLevelID = [...new Set(this.showUserLevelID)];
-        
+
         if (this.showUserLevel.length > 0 && this.showUserLevelID.length > 0) {
           this.levelSelected = true;
         }
@@ -227,26 +279,48 @@ export default {
         this.alertMessage(false, true, "Select Level!!");
       } else {
         this.isLoading = true;
+        this.isFirstLoad = true;
 
-        const { imageUrl } = this;
-
-        console.log("imageUrl on Post: ↨↨↨↨");
-        console.log(imageUrl);
-
-        this.resData = await SubjectAPI.addSubject(
-          this.subjectName,
-          imageUrl,
-          this.showUserLevelID
-        );
-
-        if (this.resData.statusCode == 201) {
-          this.alertMessage(false, true, "Subject Created Successfully!!");
-        } else {
-          this.alertMessage(
-            false,
-            true,
-            "Oops, Something went wrong, please try again!!"
+        if (this.subjectID != null) {
+          this.resData = await SubjectAPI.updateSubject(
+            this.subjectID,
+            this.subjectName,
+            this.imageUrl,
+            this.showUserLevelID
           );
+          console.log(JSON.stringify(this.resData));
+
+          if (this.resData.statusCode == 200) {
+            this.alertMessage(false, true, "Subject Updated Successfully!!");
+            setTimeout(
+              () => (sessionStorage.clear(), this.$router.push("Subject")),
+              1000
+            );
+          } else {
+            this.alertMessage(
+              false,
+              true,
+              "Oops, Something went wrong, please try again!!"
+            );
+          }
+        } else {
+          const { imageUrl } = this;
+
+          this.resData = await SubjectAPI.addSubject(
+            this.subjectName,
+            imageUrl,
+            this.showUserLevelID
+          );
+
+          if (this.resData.statusCode == 201) {
+            this.alertMessage(false, true, "Subject Created Successfully!!");
+          } else {
+            this.alertMessage(
+              false,
+              true,
+              "Oops, Something went wrong, please try again!!"
+            );
+          }
         }
       }
     },
@@ -262,7 +336,8 @@ export default {
           (this.subjectName = ""),
           (this.selectedlv = ""),
           (this.showUserLevel = []),
-          (this.isLoading = false)
+          (this.isLoading = false),
+          (this.isFirstLoad = false)
         ),
         3000
       );
