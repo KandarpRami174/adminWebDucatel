@@ -187,22 +187,24 @@ export default {
       showUserLevelID: [],
       imageUrl: null,
       image: "",
-      resData: [],
+      resSaveData: [],
+      resUpdateData: [],
+      resGetData: [],
       resLvData: [],
-      subjectID: "",
-      isFirstLoad: false
+      subjectID: null,
+      isFirstLoad: false,
     };
   },
   methods: {
     async loadData() {
       this.subjectID = sessionStorage.getItem("edit_subjetID");
-      this.resData = await SubjectAPI.getSubjectByID(this.subjectID);
-      if (this.resData.statusCode == 200) {
+      this.resGetData = await SubjectAPI.getSubjectByID(this.subjectID);
+      if (this.resGetData.statusCode == 200) {
         this.levelSelected = true;
         this.isFileSelected = true;
-        this.subjectName = this.resData.subject.subTitle;
-        this.imageUrl = `http://assetsmaster.fuegoinfotech.com/webducatel/uploadBase/subImages/${this.resData.subject.subImage}`;
-        const subLvArray = this.resData.subject.subLevelID;
+        this.subjectName = this.resGetData.subject.subTitle;
+        this.imageUrl = `http://assetsmaster.fuegoinfotech.com/webducatel/uploadBase/subImages/${this.resGetData.subject.subImage}`;
+        const subLvArray = this.resGetData.subject.subLevelID;
         subLvArray.forEach((element) => {
           console.log(element);
           this.loadLvIDData(element);
@@ -282,18 +284,30 @@ export default {
         this.isFirstLoad = true;
 
         if (this.subjectID != null) {
-          this.resData = await SubjectAPI.updateSubject(
+          console.log("I'm in side SubID!");
+          const { imageUrl } = this;
+          console.log(imageUrl);
+
+          this.resUpdateData = await SubjectAPI.updateSubject(
             this.subjectID,
             this.subjectName,
-            this.imageUrl,
+            imageUrl,
             this.showUserLevelID
           );
-          console.log(JSON.stringify(this.resData));
 
-          if (this.resData.statusCode == 200) {
-            this.alertMessage(false, true, "Subject Updated Successfully!!");
+          console.log(this.resUpdateData);
+
+          if (this.resUpdateData.statusCode == 200) {
             setTimeout(
-              () => (sessionStorage.clear(), this.$router.push("Subject")),
+              () => (
+                sessionStorage.clear(),
+                this.alertMessage(
+                  false,
+                  true,
+                  "Subject Updated Successfully!!"
+                ),
+                this.$router.push("Subject")
+              ),
               1000
             );
           } else {
@@ -304,15 +318,15 @@ export default {
             );
           }
         } else {
+          console.log("I'm in side Elese Condition!");
           const { imageUrl } = this;
-
-          this.resData = await SubjectAPI.addSubject(
+          this.resSaveData = await SubjectAPI.addSubject(
             this.subjectName,
             imageUrl,
             this.showUserLevelID
           );
 
-          if (this.resData.statusCode == 201) {
+          if (this.resSaveData.statusCode == 201) {
             this.alertMessage(false, true, "Subject Created Successfully!!");
           } else {
             this.alertMessage(
@@ -328,15 +342,15 @@ export default {
       this.isLoading = loading;
       this.isMessage = message;
       this.responseMsg = resMsg;
-      this.imageUrl = "";
       setTimeout(
         () => (
-          (this.isMessage = false),
           (this.responseMsg = ""),
           (this.subjectName = ""),
           (this.selectedlv = ""),
           (this.showUserLevel = []),
+          (this.imageUrl = ""),
           (this.isLoading = false),
+          (this.isMessage = false),
           (this.isFirstLoad = false)
         ),
         3000

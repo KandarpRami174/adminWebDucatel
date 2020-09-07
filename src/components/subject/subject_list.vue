@@ -63,7 +63,7 @@
                           <tr role="row">
                             <th>Image</th>
                             <th>Name</th>
-                            <th>Level</th>
+                            <!-- <th>Level</th> -->
                             <th>Add On</th>
                             <th>Last Changed</th>
                             <th>Action</th>
@@ -79,13 +79,13 @@
                               />
                             </td>
                             <td>{{data.subTitle}}</td>
-                            <td>{{data.level}}</td>
+                            <!-- <td>{{data.level}}</td> -->
                             <td style="width: 15rem">{{data.createdAt | formatDate}}</td>
                             <td style="width: 15rem">{{data.updatedAt | formatDate}}</td>
                             <td style="width: 5rem">
                               <button
                                 type="button"
-                                v-on:click="deleteLV(data._id)"
+                                v-on:click="deleteSub(data._id)"
                                 class="mb-6 btn-floating waves-effect waves-light gradient-45deg-red-pink gradient-shadow"
                               >
                                 <i class="material-icons">delete_forever</i>
@@ -93,7 +93,7 @@
                               <br />
                               <button
                                 type="button"
-                                v-on:click="editLV(data._id)"
+                                v-on:click="editSub(data._id)"
                                 class="mb-6 btn-floating waves-effect waves-light gradient-45deg-green-teal gradient-shadow"
                               >
                                 <i class="material-icons">edit</i>
@@ -158,7 +158,22 @@ export default {
         if (this.getSubject.statusCode == 200) {
           this.subjectData = this.getSubject.subject;
 
-          console.log(this.subjectData);
+          // for (const lvData in this.subjectData) {
+          //   if (
+          //     Object.prototype.hasOwnProperty.call(this.subjectData, lvData)
+          //   ) {
+          //     const data = this.subjectData[lvData];
+          //     const lvIDs = data.subLevelID;
+
+          //     for (const levelD in lvIDs) {
+          //       if (Object.prototype.hasOwnProperty.call(lvIDs, levelD)) {
+          //         const datas = lvIDs[levelD];
+          //         const getLevelTitle = await LevelAPI.getLevelID(datas);
+          //         console.log(JSON.stringify(getLevelTitle.level.levTitle));
+          //       }
+          //     }
+          //   }
+          // }
 
           if (this.subjectData.length > 0) {
             setTimeout(() => (this.isLoading = false), 3000);
@@ -174,13 +189,13 @@ export default {
         console.log(err);
       }
     },
-    async deleteLV(id) {
+    async deleteSub(id) {
       if (confirm(`Are you sure you want to delete this Subject!!`)) {
         await SubjectAPI.deleteSubject(id);
         this.getSubjectData();
       }
     },
-    async editLV(id) {
+    async editSub(id) {
       sessionStorage.setItem("edit_subjetID", id);
       this.$router.push("addSubject");
     },
