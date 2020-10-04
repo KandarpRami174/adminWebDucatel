@@ -119,12 +119,14 @@ export default {
       getLevel: [],
       levelData: [],
       isLoading: false,
+      isNoData: false,
       fixedFooter: 'pos-bottom',
     };
   },
   methods: {
     async getLevelData() {
       this.isLoading = true;
+      this.isNoData = true;
       try {
         this.getLevel = await LevelAPI.getLevel();
         
@@ -132,7 +134,7 @@ export default {
           this.levelData = this.getLevel.level;
           
           if (this.levelData.length > 0) {
-            setTimeout(() => (this.isLoading = false), 3000);
+            setTimeout(() => (this.isLoading = false, this.isNoData = false), 3000);
           } else {
             setTimeout(
               () => ((this.isLoading = false), (this.isNoData = true)),
