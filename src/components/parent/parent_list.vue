@@ -33,8 +33,9 @@
               <div id="responsive-table" class="card card card-default scrollspy">
                 <div class="card-content">
                   <div class="row">
-                    <div class="col s12">
-                      <table class="responsive-table">
+                    <div class="col s12 center">
+                      <h6>Data Not Available</h6>
+                      <!-- <table class="responsive-table">
                         <thead>
                           <tr>
                             <th>Name</th>
@@ -123,7 +124,7 @@
                             </td>
                           </tr>
                         </tbody>
-                      </table>
+                      </table> -->
                     </div>
                   </div>
                 </div>
@@ -132,7 +133,8 @@
           </div>
         </div>
       </div>
-      <masterfoot></masterfoot>
+      <!-- <masterfoot v-bind:class="[isNoData ? fixedFooter : '']"></masterfoot> -->
+      <masterfoot v-bind:class="fixedFooter"></masterfoot>
     </div>
   </main>
 </template>
@@ -144,7 +146,17 @@ import Foot from "../master/footer.vue";
 
 export default {
   name: "Parent",
+  data(){
+    return{
+      //CSS Variable
+      fixedFooter: "pos-bottom",
+    }
+  },
   created() {
+    if (localStorage.getItem("userRole") == null) {
+      this.$router.push("/");
+    }
+    
     document.title = "Parent";
   },
   components: {
@@ -156,4 +168,10 @@ export default {
 </script>
 
 <style>
+.pos-bottom {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
 </style>

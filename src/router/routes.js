@@ -2,6 +2,7 @@ import Login from '../components/auth/login.vue'
 import Dashboard from '../components/dashboard/dashboard.vue'
 import Subject from '../components/subject/subject_list.vue'
 import addSubject from '../components/subject/add_subject.vue'
+import updateSubject from '../components/subject/updateSubject.vue'
 import Level from '../components/level/level_list.vue'
 import addLevel from '../components/level/add_level.vue'
 import Location from '../components/location/location_list.vue'
@@ -14,6 +15,7 @@ import blogCategory from '../components/blog/category.vue'
 import addBlogCat from '../components/blog/addCategory.vue'
 import Blogs from '../components/blog/blogs.vue'
 import addBlogs from '../components/blog/addBlog.vue'
+import updateBlogs from '../components/blog/updateBlog.vue'
 import Parents from '../components/parent/parent_list.vue'
 import ParentsInfo from '../components/parent/parent_info.vue'
 import Students from '../components/student/student_list.vue'
@@ -28,6 +30,7 @@ export const routes = [
     { path: '/dashboard', component: Dashboard },
     { path: '/subject', component: Subject },
     { path: '/addSubject', component: addSubject },
+    { path: '/updateSubject', component: updateSubject },
     { path: '/level', component: Level },
     { path: '/addLevel', component: addLevel },
     { path: '/location', component: Location },
@@ -40,6 +43,7 @@ export const routes = [
     { path: '/addBlogCat', component: addBlogCat },
     { path: '/blogs', component: Blogs },
     { path: '/addBlog', component: addBlogs },
+    { path: '/ViewNUpdateBlog', component: updateBlogs },
     { path: '/parents', component: Parents },
     { path: '/parentInfo', component: ParentsInfo },
     { path: '/students', component: Students },

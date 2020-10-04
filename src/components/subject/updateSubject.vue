@@ -1,11 +1,18 @@
 <template>
   <main>
-    <div class="2-columns" data-open="click" data-menu="vertical-modern-menu" data-col="2-columns">
+    <div
+      class="2-columns"
+      data-open="click"
+      data-menu="vertical-modern-menu"
+      data-col="2-columns"
+    >
       <master-head></master-head>
       <master-nav></master-nav>
       <div id="main">
         <div class="row">
-          <div class="content-wrapper-before gradient-45deg-indigo-purple"></div>
+          <div
+            class="content-wrapper-before gradient-45deg-indigo-purple"
+          ></div>
           <div class="breadcrumbs-dark pb-0 pt-4" id="breadcrumbs-wrapper">
             <!-- Search for small screen-->
             <div class="container">
@@ -24,7 +31,7 @@
               </div>
             </div>
           </div>
-          <div class="col offset-m3 offset-l3 s12 m6 l6">
+          <div class="col offset-m2 offset-l2 s12 m8 l8">
             <div id="basic-form" class="card card card-default scrollspy">
               <div class="card-content">
                 <intersecting-circles-spinner
@@ -34,10 +41,22 @@
                   class="center-content"
                   v-if="isLoading"
                 />
+                <div
+                  class="card-alert card gradient-45deg-light-blue-cyan offset-s3"
+                  v-if="isLoading && isFirstLoad"
+                >
+                  <div class="card-content white-text">
+                    <p>
+                      <i class="material-icons">info_outline</i> Info : Sometime
+                      it takes time to save/update data, data under encryption
+                    </p>
+                  </div>
+                </div>
+
                 <form
                   @submit.prevent="saveSubject"
                   enctype="multipart/form-data"
-                  v-if="isLoading==false"
+                  v-if="isLoading == false"
                 >
                   <div class="row">
                     <div class="col s12 file-field input-field">
@@ -54,12 +73,18 @@
                           placeholder="Select Image:.."
                         />
                       </div>
-                      <div v-if="isFileSelected" class="col offset-m2 offset-l2 s12 m6 l6">
+                      <div
+                        v-if="isFileSelected"
+                        class="col offset-m2 offset-l2 s12 m8 l8"
+                      >
                         <br />
                         <img
                           :src="imageUrl"
-                          width="300"
-                          style="border-radius: 10px; box-shadow: 2px 3px 4px #b4b4b4;"
+                          width="400"
+                          style="
+                            border-radius: 10px;
+                            box-shadow: 2px 3px 4px #b4b4b4;
+                          "
                         />
                       </div>
                     </div>
@@ -78,12 +103,16 @@
                         class="gradient-45deg-indigo-purple dropdown-trigger btn"
                         @click="addLevel"
                       >
-                        <option value disabled selected>Select Level (Multiple Selection)</option>
+                        <option value disabled selected>
+                          Select Level (Multiple Selection)
+                        </option>
                         <option
                           v-for="data in levelData"
                           v-bind:key="data._id"
                           v-bind:value="{ id: data._id, text: data.levTitle }"
-                        >{{data.levTitle}}</option>
+                        >
+                          {{ data.levTitle }}
+                        </option>
                       </select>
                     </div>
                   </div>
@@ -112,22 +141,24 @@
                         type="button"
                         v-on:click="saveSubject"
                         class="btn cyan waves-effect waves-light right"
-                      >Submit</button>
+                      >
+                        Submit
+                      </button>
                     </div>
                   </div>
                 </form>
                 <div class="card-alert card green lighten-5" v-if="isMessage">
                   <div class="card-content green-text">
-                    <p>{{responseMsg}}</p>
+                    <p>{{ responseMsg }}</p>
                   </div>
                 </div>
               </div>
             </div>
-            <div style="height: 1rem;"></div>
+            <div style="height: 1rem"></div>
           </div>
         </div>
       </div>
-      <masterfoot></masterfoot>
+      <masterfoot v-bind:class="[isNoData ? fixedFooter : '']"></masterfoot>
     </div>
   </main>
 </template>
@@ -148,6 +179,13 @@ export default {
     }
     document.title = "Add New Subject";
     this.loadLevelData();
+
+    if (sessionStorage.getItem("edit_subjetID") != null) {
+      this.isLoading = true;
+      this.isNoData = true;
+      //   this.isFirstLoad = true;
+      this.loadData();
+    }
   },
   components: {
     masterHead: Head,
@@ -158,23 +196,68 @@ export default {
   data() {
     return {
       isLoading: false,
+      isNoData: false,
       isMessage: false,
       levelSelected: false,
       isFileSelected: false,
+      isNewFile: false,
       responseMsg: "",
       selectedFile: null,
       levelData: [],
       subjectName: "",
+      subjectImgName: "",
       selectedlv: "",
       showUserLevel: [],
       showUserLevelID: [],
       imageUrl: null,
       image: "",
+      resSaveData: [],
+      resUpdateData: [],
+      resGetData: [],
+      resLvData: [],
+      subjectID: null,
+      isFirstLoad: false,
+      //CSS Variable
+      fixedFooter: "pos-bottom",
     };
   },
   methods: {
+    async loadData() {
+      this.subjectID = sessionStorage.getItem("edit_subjetID");
+      this.resGetData = await SubjectAPI.getSubjectByID(this.subjectID);
+      if (this.resGetData.statusCode == 200) {
+        this.levelSelected = true;
+        this.isFileSelected = true;
+        this.subjectName = this.resGetData.subject.subTitle;
+        this.imageUrl = `http://assetsmaster.fuegoinfotech.com/webducatel/uploadBase/subImages/${this.resGetData.subject.subImage}`;
+        this.subjectImgName = this.resGetData.subject.subImage;
+        const subLvArray = this.resGetData.subject.subLevelID;
+        subLvArray.forEach((element) => {
+          console.log(element);
+          this.loadLvIDData(element);
+        });
+      }
+    },
+    async loadLvIDData(lvID) {
+      this.resLvData = await LevelAPI.getLevelID(lvID);
+      if (this.resLvData.statusCode == 200) {
+        this.showUserLevel.push(`${this.resLvData.level.levTitle}`);
+        this.showUserLevelID.push(`${this.resLvData.level._id}`);
+
+        this.showUserLevel = [...new Set(this.showUserLevel)];
+        this.showUserLevelID = [...new Set(this.showUserLevelID)];
+
+        if (this.showUserLevel.length > 0 && this.showUserLevelID.length > 0) {
+          this.levelSelected = true;
+          this.isLoading = false;
+          this.isNoData = false;
+          this.isFirstLoad = false;
+        }
+      }
+    },
     onFileSelect() {
       this.isFileSelected = true;
+      this.isNewFile = true;
       const files = event.target.files[0];
       const fileName = files.name;
 
@@ -209,7 +292,7 @@ export default {
 
         this.showUserLevel = [...new Set(this.showUserLevel)];
         this.showUserLevelID = [...new Set(this.showUserLevelID)];
-        
+
         if (this.showUserLevel.length > 0 && this.showUserLevelID.length > 0) {
           this.levelSelected = true;
         }
@@ -227,17 +310,32 @@ export default {
         this.alertMessage(false, true, "Select Level!!");
       } else {
         this.isLoading = true;
+        this.isNoData = true;
+        this.isFirstLoad = true;
 
+        console.log("I'm in side SubID!");
         const { imageUrl } = this;
+        console.log(imageUrl);
 
-        this.resData = await SubjectAPI.addSubject(
+        this.resUpdateData = await SubjectAPI.updateSubject(
+          this.subjectID,
           this.subjectName,
-          imageUrl,
+          this.isNewFile ? imageUrl : this.subjectImgName,
+          this.isNewFile,
           this.showUserLevelID
         );
 
-        if (this.resData.statusCode == 201) {
-          this.alertMessage(false, true, "Subject Created Successfully!!");
+        console.log(this.resUpdateData);
+
+        if (this.resUpdateData.statusCode == 200) {
+          setTimeout(
+            () => (
+              sessionStorage.clear(),
+              this.alertMessage(false, true, "Subject Updated Successfully!!"),
+              this.$router.push("Subject")
+            ),
+            1000
+          );
         } else {
           this.alertMessage(
             false,
@@ -249,17 +347,21 @@ export default {
     },
     alertMessage(loading, message, resMsg) {
       this.isLoading = loading;
+      this.isNoData = loading;
       this.isMessage = message;
       this.responseMsg = resMsg;
-      this.imageUrl = "";
       setTimeout(
         () => (
-          (this.isMessage = false),
           (this.responseMsg = ""),
           (this.subjectName = ""),
           (this.selectedlv = ""),
           (this.showUserLevel = []),
-          (this.isLoading = false)
+          (this.imageUrl = ""),
+          (this.isLoading = false),
+          (this.isNoData = false),
+          (this.isMessage = false),
+          (this.isFirstLoad = false),
+          (this.isNewFile = false)
         ),
         3000
       );
