@@ -88,10 +88,12 @@
                                       <div class="card-action center-align">
                                         <button
                                           class="waves-effect waves-light gradient-45deg-cyan-light-green gradient-shadow btn"
+                                          @click="editSubs(data._id)"
                                         >Edit</button>
                                         <button
                                           class="ml-6 waves-effect waves-light gradient-45deg-red-pink gradient-shadow btn"
-                                        >Disable</button>
+                                          @click="deleteSubs(data._id)"
+                                        >Delete</button>
                                       </div>
                                     </div>
                                   </div>
@@ -110,7 +112,7 @@
           </div>
         </div>
       </div>
-      <masterfoot v-bind:class="[isNoData ? fixedFooter : '']"></masterfoot>
+      <masterfoot v-bind:class="[isLowFoot ? fixedFooter : '']"></masterfoot>
     </div>
   </main>
 </template>
@@ -145,12 +147,14 @@ export default {
       subscriptionData: [],
       isLoading: false,
       isNoData: false,
+      isLowFoot: false,
       fixedFooter: "pos-bottom",
     };
   },
   methods: {
     async getSubscriptionData() {
       this.isLoading = true;
+      this.isLowFoot = true;
       try {
         this.getSubscription = await SubscriptionAPI.getSubscription();
 
@@ -160,10 +164,10 @@ export default {
           console.log(JSON.stringify(this.subscriptionData));
 
           if (this.subscriptionData.length > 0) {
-            setTimeout(() => (this.isLoading = false), 3000);
+            setTimeout(() => (this.isLoading = false, this.isLowFoot = false), 3000);
           } else {
             setTimeout(
-              () => ((this.isLoading = false), (this.isNoData = true)),
+              () => (this.isLoading = false, this.isNoData = true, this.isLowFoot = true),
               3000
             );
           }
