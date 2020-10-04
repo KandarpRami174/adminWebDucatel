@@ -286,14 +286,14 @@ export default {
           console.log("I'm in side SubID!");
           const { imageUrl } = this;
           console.log(imageUrl);
-
+          
           this.resUpdateData = await SubjectAPI.updateSubject(
             this.subjectID,
             this.subjectName,
             imageUrl,
             this.showUserLevelID
           );
-
+          
           console.log(this.resUpdateData);
 
           if (this.resUpdateData.statusCode == 200) {
