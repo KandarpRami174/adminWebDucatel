@@ -53,10 +53,11 @@ class SubjectAPI {
   }
 
   // PUT Subject
-  static updateSubject(subID, subTitle, subImage, subLevelID) {
+  static updateSubject(subID, subTitle, subImage, subIsBaseImg, subLevelID) {
     const subData = {
       subTitle,
       subImage,
+      subIsBaseImg,
       subLevelID,
     };
 
