@@ -1,11 +1,18 @@
 <template>
   <main>
-    <div class="2-columns" data-open="click" data-menu="vertical-modern-menu" data-col="2-columns">
+    <div
+      class="2-columns"
+      data-open="click"
+      data-menu="vertical-modern-menu"
+      data-col="2-columns"
+    >
       <master-head></master-head>
       <master-nav></master-nav>
       <div id="main">
         <div class="row">
-          <div class="content-wrapper-before gradient-45deg-indigo-purple"></div>
+          <div
+            class="content-wrapper-before gradient-45deg-indigo-purple"
+          ></div>
           <div class="breadcrumbs-dark pb-0 pt-4" id="breadcrumbs-wrapper">
             <!-- Search for small screen-->
             <div class="container">
@@ -32,232 +39,66 @@
           <br />
           <div class="col s12">
             <div class="container">
-              <!-- users list start -->
-              <div class="card-panel">
-                <div class="row">
-                  <div class="col s12 m6 l5">
-                    <label for="users-list-role">Role</label>
-                    <div class="input-field">
-                      <select class="form-control" id="users-list-role">
-                        <option value>All</option>
-                        <option value="Admin">Admin</option>
-                        <option value="Bloger">Bloger</option>
-                        <option value="HR">HR</option>
-                        <option value="Marketing">Marketing</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col s12 m6 l4">
-                    <label for="users-list-status">Status</label>
-                    <div class="input-field">
-                      <select class="form-control" id="users-list-status">
-                        <option value>All</option>
-                        <option value="Active">Active</option>
-                        <option value="Close">Close</option>
-                        <option value="Banned">Banned</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col s12 m6 l3 display-flex align-items-center show-btn">
-                    <button type="submit" class="btn btn-block indigo waves-effect waves-light">Show</button>
-                  </div>
-                </div>
-              </div>
               <div class="users-list-table">
                 <div class="card">
                   <div class="card-content">
                     <!-- datatable start -->
-                    <div class="responsive-table">
+                    <intersecting-circles-spinner
+                      :animation-duration="1200"
+                      :size="70"
+                      color="#7b1fa2"
+                      class="center-content"
+                      v-if="isLoading"
+                    />
+                    <div class="responsive-table" v-if="isLoading == false">
                       <table id="users-list-datatable" class="responsive-table">
                         <thead>
-                          <tr>
+                          <tr class="center">
                             <th>User Name</th>
                             <th>Name</th>
-                            <th>Last Activity</th>
+                            <th style="width: 15rem">Email</th>
                             <th>Role</th>
-                            <th>Status</th>
-                            <th>Edit</th>
+                            <!-- <th>Status</th> -->
+                            <th>Add On</th>
+                            <th>Last Changed</th>
+                            <th style="width: 4rem"></th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td>
-                              <a href="#">Kandarp0174</a>
-                            </td>
-                            <td>Kandarp Rami</td>
-                            <td>02/06/2020</td>
-                            <td>Admin</td>
-                            <td>
+                          <tr
+                            role="row"
+                            class="center"
+                            v-for="data in mUserData"
+                            v-bind:key="data._id"
+                          >
+                            <td>{{ data.masterUserName }}</td>
+                            <td>{{ data.masterName }}</td>
+                            <td>{{ data.masterEmail }}</td>
+                            <td>{{ data.masterRole }}</td>
+                            <!-- <td>
                               <span class="chip green lighten-5">
-                                <span class="green-text">Active</span>
+                                <span class="green-text">{{data.}}</span>
                               </span>
-                            </td>
+                            </td> -->
+                            <td>{{ data.createdAt | formatDate }}</td>
+                            <td>{{ data.updatedAt | formatDate }}</td>
                             <td>
-                              <a href="#">
+                              <button
+                                type="button"
+                                v-on:click="editShield(data._id)"
+                                class="mb-6 btn-floating waves-effect waves-light gradient-45deg-green-teal gradient-shadow"
+                              >
                                 <i class="material-icons">edit</i>
-                              </a>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <a href="#">Kandarp0174</a>
-                            </td>
-                            <td>Kandarp Rami</td>
-                            <td>02/06/2020</td>
-                            <td>Admin</td>
-                            <td>
-                              <span class="chip green lighten-5">
-                                <span class="green-text">Active</span>
-                              </span>
-                            </td>
-                            <td>
-                              <a href="#">
-                                <i class="material-icons">edit</i>
-                              </a>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <a href="#">Kandarp0174</a>
-                            </td>
-                            <td>Kandarp Rami</td>
-                            <td>02/06/2020</td>
-                            <td>Admin</td>
-                            <td>
-                              <span class="chip green lighten-5">
-                                <span class="green-text">Active</span>
-                              </span>
-                            </td>
-                            <td>
-                              <a href="#">
-                                <i class="material-icons">edit</i>
-                              </a>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <a href="#">Kandarp0174</a>
-                            </td>
-                            <td>Kandarp Rami</td>
-                            <td>02/06/2020</td>
-                            <td>Admin</td>
-                            <td>
-                              <span class="chip green lighten-5">
-                                <span class="green-text">Active</span>
-                              </span>
-                            </td>
-                            <td>
-                              <a href="#">
-                                <i class="material-icons">edit</i>
-                              </a>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <a href="#">Kandarp0174</a>
-                            </td>
-                            <td>Kandarp Rami</td>
-                            <td>02/06/2020</td>
-                            <td>Admin</td>
-                            <td>
-                              <span class="chip green lighten-5">
-                                <span class="green-text">Active</span>
-                              </span>
-                            </td>
-                            <td>
-                              <a href="#">
-                                <i class="material-icons">edit</i>
-                              </a>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <a href="#">Kandarp0174</a>
-                            </td>
-                            <td>Kandarp Rami</td>
-                            <td>02/06/2020</td>
-                            <td>Admin</td>
-                            <td>
-                              <span class="chip green lighten-5">
-                                <span class="green-text">Active</span>
-                              </span>
-                            </td>
-                            <td>
-                              <a href="#">
-                                <i class="material-icons">edit</i>
-                              </a>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <a href="#">Kandarp0174</a>
-                            </td>
-                            <td>Kandarp Rami</td>
-                            <td>02/06/2020</td>
-                            <td>Admin</td>
-                            <td>
-                              <span class="chip green lighten-5">
-                                <span class="green-text">Active</span>
-                              </span>
-                            </td>
-                            <td>
-                              <a href="#">
-                                <i class="material-icons">edit</i>
-                              </a>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <a href="#">Kandarp0174</a>
-                            </td>
-                            <td>Kandarp Rami</td>
-                            <td>02/06/2020</td>
-                            <td>Admin</td>
-                            <td>
-                              <span class="chip green lighten-5">
-                                <span class="green-text">Active</span>
-                              </span>
-                            </td>
-                            <td>
-                              <a href="#">
-                                <i class="material-icons">edit</i>
-                              </a>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <a href="#">Kandarp0174</a>
-                            </td>
-                            <td>Kandarp Rami</td>
-                            <td>02/06/2020</td>
-                            <td>Admin</td>
-                            <td>
-                              <span class="chip green lighten-5">
-                                <span class="green-text">Active</span>
-                              </span>
-                            </td>
-                            <td>
-                              <a href="#">
-                                <i class="material-icons">edit</i>
-                              </a>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <a href="#">Kandarp0174</a>
-                            </td>
-                            <td>Kandarp Rami</td>
-                            <td>02/06/2020</td>
-                            <td>Admin</td>
-                            <td>
-                              <span class="chip green lighten-5">
-                                <span class="green-text">Active</span>
-                              </span>
-                            </td>
-                            <td>
-                              <a href="#">
-                                <i class="material-icons">edit</i>
-                              </a>
+                              </button>
+                              <br />
+                              <br />
+                              <button
+                                type="button"
+                                v-on:click="deleteShield(data._id)"
+                                class="mb-6 btn-floating waves-effect waves-light gradient-45deg-red-pink gradient-shadow"
+                              >
+                                <i class="material-icons">delete</i>
+                              </button>
                             </td>
                           </tr>
                         </tbody>
@@ -272,7 +113,7 @@
           </div>
         </div>
       </div>
-      <masterfoot></masterfoot>
+      <masterfoot v-bind:class="[isNoData ? fixedFooter : '']"></masterfoot>
     </div>
   </main>
 </template>
@@ -281,19 +122,88 @@
 import Head from "../master/head.vue";
 import Nav from "../master/navbar.vue";
 import Foot from "../master/footer.vue";
+import { IntersectingCirclesSpinner } from "epic-spinners";
+import ShieldAPI from "../../api/SHIELD/webShield";
 
 export default {
   name: "Admin User",
   created() {
+    if (localStorage.getItem("userRole") == null) {
+      this.$router.push("/");
+    }
     document.title = "Admin User";
+
+    this.getShieldData();
+  },
+  data() {
+    return {
+      isNoData: false,
+      mUserData: [],
+      getMUser: [],
+      isLoading: false,
+      //CSS Variable
+      fixedFooter: "pos-bottom",
+    };
   },
   components: {
     masterHead: Head,
     masterNav: Nav,
-    masterfoot: Foot
-  }
+    masterfoot: Foot,
+    IntersectingCirclesSpinner,
+  },
+  methods: {
+    async getShieldData() {
+      this.isLoading = true;
+      this.isNoData = true;
+      try {
+        this.getMUser = await ShieldAPI.getAllMember();
+
+        if (this.getMUser.statusCode == 200) {
+          this.mUserData = this.getMUser.master;
+          console.log(this.mUserData);
+          if (this.mUserData.length > 0) {
+            if (this.mUserData.length <= 3) {
+              setTimeout(
+                () => ((this.isLoading = false), (this.isNoData = true)),
+                3000
+              );
+            } else if (this.mUserData.length > 3) {
+              setTimeout(
+                () => ((this.isLoading = false), (this.isNoData = false)),
+                3000
+              );
+            }
+          } else {
+            setTimeout(
+              () => ((this.isLoading = false), (this.isNoData = true)),
+              3000
+            );
+          }
+        }
+      } catch (err) {
+        setTimeout(() => (this.isLoading = false), 3000);
+        console.log(err);
+      }
+    },
+    async deleteShield(id) {
+      if (confirm(`Are you sure you want to delete this User!!`)) {
+        await ShieldAPI.deleteMyTeam(id);
+        this.getShieldData();
+      }
+    },
+    async editShield(id) {
+      sessionStorage.setItem("edit_ShieldID", id);
+      this.$router.push("addAdminUser");
+    },
+  },
 };
 </script>
 
 <style>
+.pos-bottom {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
 </style>
