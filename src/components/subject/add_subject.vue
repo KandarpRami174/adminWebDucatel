@@ -162,7 +162,6 @@ export default {
 
     if (sessionStorage.getItem("edit_subjetID") != null) {
       this.isLoading = true;
-      this.isFirstLoad = true;
       this.loadData();
     }
   },
