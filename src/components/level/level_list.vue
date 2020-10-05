@@ -106,6 +106,7 @@ export default {
       this.$router.push("/");
     }
     document.title = "Level";
+    sessionStorage.clear();
     this.getLevelData();
   },
   components: {

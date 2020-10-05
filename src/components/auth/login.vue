@@ -107,30 +107,27 @@ export default {
       } else {
         this.isLoading = true;
         this.userData = await LoginAPI.authUser(this.userName, this.userPass);
-        
-        for (const x in this.userData) {
-          if (Object.prototype.hasOwnProperty.call(this.userData, x)) {
-            const userData = this.userData[x];
-            if (userData.length > 0) {
-              this.isLoading = false;
-              var userRole = userData[0].masterRole;
-              console.log("Get User Data: " + userRole);
-              localStorage.setItem("userRole",userRole);
-              if (userRole == "Admin"){
-                this.$router.push("Dashboard");
-              }else if (userRole == "Bloger") {
-                this.$router.push("Blogs");
-              }
-            } else {
-              this.isError = true;
-              this.isLoading = false;
-              this.validationError = "Invalid Username / Password.";
-              setTimeout(
-                () => ((this.isError = false), (this.validationError = "")),
-                3000
-              );
-            }
+        const userDatas = this.userData.master;
+        console.log(userDatas);
+
+        if (this.userData.statusCode == 200) {
+          this.isLoading = false;
+          var userRole = userDatas[0].masterRole;
+          console.log("Get User Data: " + userRole);
+          localStorage.setItem("userRole", userRole);
+          if (userRole == "Admin") {
+            this.$router.push("Dashboard");
+          } else if (userRole == "Bloger") {
+            this.$router.push("Blogs");
           }
+        } else {
+          this.isError = true;
+          this.isLoading = false;
+          this.validationError = "Invalid Username / Password.";
+          setTimeout(
+            () => ((this.isError = false), (this.validationError = "")),
+            3000
+          );
         }
       }
     },

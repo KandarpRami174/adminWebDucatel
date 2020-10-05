@@ -52,11 +52,11 @@
         <a class="navigation-header-text">Others</a>
         <i class="navigation-header-icon material-icons">more_horiz</i>
       </li>
-      <li v-if="imAdmin==true && imBloger==true">
+      <!-- <li v-if="imAdmin==true && imBloger==true">
         <router-link to="/location" active-class="active" tag="a">
           <i class="material-icons dp48">add_location</i>Location
         </router-link>
-      </li>
+      </li> -->
       <li v-if="imAdmin==true && imBloger==true">
         <router-link to="/subscription" active-class="active" tag="a">
           <i class="material-icons dp48">attach_money</i>Subscriptions

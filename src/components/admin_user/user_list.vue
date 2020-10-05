@@ -133,6 +133,8 @@ export default {
     }
     document.title = "Admin User";
 
+    sessionStorage.clear();
+
     this.getShieldData();
   },
   data() {

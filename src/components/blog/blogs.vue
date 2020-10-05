@@ -96,6 +96,8 @@ export default {
 
     document.title = "Blogs";
 
+    sessionStorage.clear();
+
     this.getContentData();
   },
   components: {

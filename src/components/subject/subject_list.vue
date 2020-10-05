@@ -1,18 +1,11 @@
 <template>
   <main>
-    <div
-      class="2-columns"
-      data-open="click"
-      data-menu="vertical-modern-menu"
-      data-col="2-columns"
-    >
+    <div class="2-columns" data-open="click" data-menu="vertical-modern-menu" data-col="2-columns">
       <master-head></master-head>
       <master-nav></master-nav>
       <div id="main">
         <div class="row">
-          <div
-            class="content-wrapper-before gradient-45deg-indigo-purple"
-          ></div>
+          <div class="content-wrapper-before gradient-45deg-indigo-purple"></div>
           <div class="breadcrumbs-dark pb-0 pt-4" id="breadcrumbs-wrapper">
             <!-- Search for small screen-->
             <div class="container">
@@ -28,8 +21,7 @@
                 <div class="col s2 m6 l6">
                   <a
                     class="btn waves-effect waves-light breadcrumbs-btn right gradient-45deg-green-teal ml-2 mt-5"
-                    >Download</a
-                  >
+                  >Download</a>
                   <router-link
                     to="/addSubject"
                     class="btn waves-effect waves-light gradient-45deg-light-blue-cyan breadcrumbs-btn right mt-5"
@@ -42,10 +34,7 @@
           </div>
           <div class="row mt-5">
             <div class="col s12 m12 l12">
-              <div
-                id="responsive-table"
-                class="card card card-default scrollspy"
-              >
+              <div id="responsive-table" class="card card card-default scrollspy">
                 <div class="card-content">
                   <div class="row">
                     <div class="col s12">
@@ -58,12 +47,11 @@
                       />
                       <div
                         class="card-alert card gradient-45deg-amber-amber col s6 offset-s3"
-                        v-if="isLoading == false && isNoData == true"
+                        v-if="isNoData"
                       >
                         <div class="card-content white-text">
                           <p>
-                            <i class="material-icons">warning</i> WARNING : Data
-                            Not Available
+                            <i class="material-icons">warning</i> WARNING : Data Not Available
                           </p>
                         </div>
                       </div>
@@ -82,32 +70,18 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr
-                            role="row"
-                            v-for="data in subjectData"
-                            v-bind:key="data._id"
-                          >
+                          <tr role="row" v-for="data in subjectData" v-bind:key="data._id">
                             <td>
                               <img
-                                v-bind:src="
-                                  'http://assetsmaster.fuegoinfotech.com/webducatel/uploadBase/subImages/' +
-                                  data.subImage
-                                "
+                                v-bind:src="'http://assetsmaster.fuegoinfotech.com/webducatel/uploadBase/subImages/'+data.subImage"
                                 width="150"
-                                style="
-                                  border-radius: 10px;
-                                  box-shadow: 2px 3px 4px #b4b4b4;
-                                "
+                                style="border-radius: 10px; box-shadow: 2px 3px 4px #c4c4c4;"
                               />
                             </td>
-                            <td>{{ data.subTitle }}</td>
-                            <td>{{ data.level }}</td>
-                            <td style="width: 15rem">
-                              {{ data.createdAt | formatDate }}
-                            </td>
-                            <td style="width: 15rem">
-                              {{ data.updatedAt | formatDate }}
-                            </td>
+                            <td>{{data.subTitle}}</td>
+                            <td>{{data.level}}</td>
+                            <td style="width: 15rem">{{data.createdAt | formatDate}}</td>
+                            <td style="width: 15rem">{{data.updatedAt | formatDate}}</td>
                             <td style="width: 5rem">
                               <button
                                 type="button"
@@ -136,7 +110,7 @@
           </div>
         </div>
       </div>
-      <masterfoot v-bind:class="[isLimitData ? fixedFooter : '']"></masterfoot>
+      <masterfoot v-bind:class="[isNoData ? fixedFooter : '']"></masterfoot>
     </div>
   </main>
 </template>
@@ -156,6 +130,7 @@ export default {
       this.$router.push("/");
     }
     document.title = "Subject";
+    sessionStorage.clear();
     this.getSubjectData();
   },
   components: {
@@ -170,15 +145,12 @@ export default {
       subjectData: [],
       isLoading: false,
       isNoData: false,
-      isLimitData: false,
       fixedFooter: "pos-bottom",
     };
   },
   methods: {
     async getSubjectData() {
       this.isLoading = true;
-      this.isNoData = true;
-      this.isLimitData = true;
       try {
         this.getSubject = await SubjectAPI.getSubject();
 
@@ -190,14 +162,7 @@ export default {
           console.log(this.subjectData);
 
           if (this.subjectData.length > 0) {
-            if (this.subjectData.length == 2) {
-              setTimeout(() => (this.isLoading = false, this.isNoData = false), 3000);
-            } else {
-              setTimeout(
-                () => ((this.isLoading = false), (this.isNoData = false, this.isLimitData = false)),
-                3000
-              );
-            }
+            setTimeout(() => (this.isLoading = false), 3000);
           } else {
             setTimeout(
               () => ((this.isLoading = false), (this.isNoData = true)),
@@ -218,7 +183,7 @@ export default {
     },
     async editLV(id) {
       sessionStorage.setItem("edit_subjetID", id);
-      this.$router.push("updateSubject");
+      this.$router.push("addSubject");
     },
   },
 };
