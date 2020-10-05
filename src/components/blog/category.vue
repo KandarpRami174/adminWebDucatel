@@ -117,7 +117,7 @@ export default {
     }
 
     document.title = "Blog Category";
-
+    sessionStorage.clear();
     this.getCategoryData()
   },
   components: {

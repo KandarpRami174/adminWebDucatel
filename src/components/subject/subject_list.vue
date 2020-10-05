@@ -130,6 +130,7 @@ export default {
       this.$router.push("/");
     }
     document.title = "Subject";
+    sessionStorage.clear();
     this.getSubjectData();
   },
   components: {
