@@ -51,7 +51,7 @@
                       <div class="card-panel border-radius-6 mt-10 card-animation-1">
                         <img
                           class="responsive-img border-radius-8 z-depth-4 image-n-margin"
-                          v-bind:src="'http://assetsmaster.fuegoinfotech.com/webducatel/uploadBase/blogImage/'+data.bgContImage"
+                          v-bind:src="'http://assetsmaster.webducatel.com/ducatelassets/blogImage/'+data.bgContImage"
                           alt="images"
                         />
                         <h6

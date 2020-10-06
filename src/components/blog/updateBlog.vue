@@ -56,7 +56,7 @@
                       <img
                         class="responsive-img border-radius-8 z-depth-4 image-n-margin"
                         v-bind:src="
-                          'http://assetsmaster.fuegoinfotech.com/webducatel/uploadBase/blogImage/' +
+                          'http://assetsmaster.webducatel.com/ducatelassets/blogImage/' +
                           BGDImg
                         "
                         alt
@@ -346,7 +346,7 @@ export default {
       this.BGDMCnt = BGData.bgContDetailInfo;
 
       // Edit Mode
-      this.bgImageUrl = `http://assetsmaster.fuegoinfotech.com/webducatel/uploadBase/blogImage/${BGData.bgContImage}`;
+      this.bgImageUrl = `http://assetsmaster.webducatel.com/ducatelassets/blogImage/${BGData.bgContImage}`;
       this.blogTitle = BGData.bgContTitle;
       this.blogSrtCnt = BGData.bgContSortInfo;
       this.content = BGData.bgContDetailInfo;
