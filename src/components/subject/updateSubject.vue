@@ -230,7 +230,7 @@ export default {
         this.levelSelected = true;
         this.isFileSelected = true;
         this.subjectName = this.resGetData.subject.subTitle;
-        this.imageUrl = `http://assetsmaster.fuegoinfotech.com/webducatel/uploadBase/subImages/${this.resGetData.subject.subImage}`;
+        this.imageUrl = `http://assetsmaster.webducatel.com/ducatelassets/subImages/${this.resGetData.subject.subImage}`;
         this.subjectImgName = this.resGetData.subject.subImage;
         const subLvArray = this.resGetData.subject.subLevelID;
         subLvArray.forEach((element) => {
@@ -316,7 +316,6 @@ export default {
 
         console.log("I'm in side SubID!");
         const { imageUrl } = this;
-        console.log(imageUrl);
 
         this.resUpdateData = await SubjectAPI.updateSubject(
           this.subjectID,

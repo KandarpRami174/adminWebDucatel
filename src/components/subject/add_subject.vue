@@ -1,11 +1,18 @@
 <template>
   <main>
-    <div class="2-columns" data-open="click" data-menu="vertical-modern-menu" data-col="2-columns">
+    <div
+      class="2-columns"
+      data-open="click"
+      data-menu="vertical-modern-menu"
+      data-col="2-columns"
+    >
       <master-head></master-head>
       <master-nav></master-nav>
       <div id="main">
         <div class="row">
-          <div class="content-wrapper-before gradient-45deg-indigo-purple"></div>
+          <div
+            class="content-wrapper-before gradient-45deg-indigo-purple"
+          ></div>
           <div class="breadcrumbs-dark pb-0 pt-4" id="breadcrumbs-wrapper">
             <!-- Search for small screen-->
             <div class="container">
@@ -40,7 +47,8 @@
                 >
                   <div class="card-content white-text">
                     <p>
-                      <i class="material-icons">info_outline</i> Info : Sometime it takes time to save/update data, data under encryption
+                      <i class="material-icons">info_outline</i> Info : Sometime
+                      it takes time to save/update data, data under encryption
                     </p>
                   </div>
                 </div>
@@ -48,7 +56,7 @@
                 <form
                   @submit.prevent="saveSubject"
                   enctype="multipart/form-data"
-                  v-if="isLoading==false"
+                  v-if="isLoading == false"
                 >
                   <div class="row">
                     <div class="col s12 file-field input-field">
@@ -65,12 +73,18 @@
                           placeholder="Select Image:.."
                         />
                       </div>
-                      <div v-if="isFileSelected" class="col offset-m2 offset-l2 s12 m6 l6">
+                      <div
+                        v-if="isFileSelected"
+                        class="col offset-m2 offset-l2 s12 m6 l6"
+                      >
                         <br />
                         <img
                           :src="imageUrl"
                           width="300"
-                          style="border-radius: 10px; box-shadow: 2px 3px 4px #b4b4b4;"
+                          style="
+                            border-radius: 10px;
+                            box-shadow: 2px 3px 4px #b4b4b4;
+                          "
                         />
                       </div>
                     </div>
@@ -89,12 +103,16 @@
                         class="gradient-45deg-indigo-purple dropdown-trigger btn"
                         @click="addLevel"
                       >
-                        <option value disabled selected>Select Level (Multiple Selection)</option>
+                        <option value disabled selected>
+                          Select Level (Multiple Selection)
+                        </option>
                         <option
                           v-for="data in levelData"
                           v-bind:key="data._id"
                           v-bind:value="{ id: data._id, text: data.levTitle }"
-                        >{{data.levTitle}}</option>
+                        >
+                          {{ data.levTitle }}
+                        </option>
                       </select>
                     </div>
                   </div>
@@ -123,18 +141,20 @@
                         type="button"
                         v-on:click="saveSubject"
                         class="btn cyan waves-effect waves-light right"
-                      >Submit</button>
+                      >
+                        Submit
+                      </button>
                     </div>
                   </div>
                 </form>
                 <div class="card-alert card green lighten-5" v-if="isMessage">
                   <div class="card-content green-text">
-                    <p>{{responseMsg}}</p>
+                    <p>{{ responseMsg }}</p>
                   </div>
                 </div>
               </div>
             </div>
-            <div style="height: 1rem;"></div>
+            <div style="height: 1rem"></div>
           </div>
         </div>
       </div>
@@ -189,41 +209,10 @@ export default {
       resData: [],
       resLvData: [],
       subjectID: "",
-      isFirstLoad: false
+      isFirstLoad: false,
     };
   },
   methods: {
-    async loadData() {
-      this.subjectID = sessionStorage.getItem("edit_subjetID");
-      this.resData = await SubjectAPI.getSubjectByID(this.subjectID);
-      if (this.resData.statusCode == 200) {
-        this.levelSelected = true;
-        this.isFileSelected = true;
-        this.subjectName = this.resData.subject.subTitle;
-        this.imageUrl = `http://assetsmaster.fuegoinfotech.com/webducatel/uploadBase/subImages/${this.resData.subject.subImage}`;
-        const subLvArray = this.resData.subject.subLevelID;
-        subLvArray.forEach((element) => {
-          console.log(element);
-          this.loadLvIDData(element);
-        });
-      }
-    },
-    async loadLvIDData(lvID) {
-      this.resLvData = await LevelAPI.getLevelID(lvID);
-      if (this.resLvData.statusCode == 200) {
-        this.showUserLevel.push(`${this.resLvData.level.levTitle}`);
-        this.showUserLevelID.push(`${this.resLvData.level._id}`);
-
-        this.showUserLevel = [...new Set(this.showUserLevel)];
-        this.showUserLevelID = [...new Set(this.showUserLevelID)];
-
-        if (this.showUserLevel.length > 0 && this.showUserLevelID.length > 0) {
-          this.levelSelected = true;
-          this.isLoading = false;
-          this.isFirstLoad = false;
-        }
-      }
-    },
     onFileSelect() {
       this.isFileSelected = true;
       const files = event.target.files[0];
@@ -280,46 +269,22 @@ export default {
         this.isLoading = true;
         this.isFirstLoad = true;
 
-        if (this.subjectID != null) {
-          this.resData = await SubjectAPI.updateSubject(
-            this.subjectID,
-            this.subjectName,
-            this.imageUrl,
-            this.showUserLevelID
-          );
-          console.log(JSON.stringify(this.resData));
+        const { imageUrl } = this;
 
-          if (this.resData.statusCode == 200) {
-            this.alertMessage(false, true, "Subject Updated Successfully!!");
-            setTimeout(
-              () => (sessionStorage.clear(), this.$router.push("Subject")),
-              1000
-            );
-          } else {
-            this.alertMessage(
-              false,
-              true,
-              "Oops, Something went wrong, please try again!!"
-            );
-          }
+        this.resData = await SubjectAPI.addSubject(
+          this.subjectName,
+          imageUrl,
+          this.showUserLevelID
+        );
+
+        if (this.resData.statusCode == 201) {
+          this.alertMessage(false, true, "Subject Created Successfully!!");
         } else {
-          const { imageUrl } = this;
-
-          this.resData = await SubjectAPI.addSubject(
-            this.subjectName,
-            imageUrl,
-            this.showUserLevelID
+          this.alertMessage(
+            false,
+            true,
+            "Oops, Something went wrong, please try again!!"
           );
-
-          if (this.resData.statusCode == 201) {
-            this.alertMessage(false, true, "Subject Created Successfully!!");
-          } else {
-            this.alertMessage(
-              false,
-              true,
-              "Oops, Something went wrong, please try again!!"
-            );
-          }
         }
       }
     },

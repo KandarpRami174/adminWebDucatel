@@ -11,7 +11,7 @@ export default {
     let vendorsJS = document.createElement('script')
     vendorsJS.setAttribute(
       'src',
-      'http://assetsmaster.fuegoinfotech.com/webducatel/app-assets/js/vendors.min.js'
+      'http://assetsmaster.webducatel.com/app-assets/js/vendors.min.js'
     )
     document.body.appendChild(vendorsJS)
     
@@ -19,7 +19,7 @@ export default {
     let pluginsJS = document.createElement('script')
     pluginsJS.setAttribute(
       'src',
-      'http://assetsmaster.fuegoinfotech.com/webducatel/app-assets/js/plugins.js'
+      'http://assetsmaster.webducatel.com/app-assets/js/plugins.js'
     )
     document.body.appendChild(pluginsJS)
     
@@ -27,7 +27,7 @@ export default {
     let searchJS = document.createElement('script')
     searchJS.setAttribute(
       'src',
-      'http://assetsmaster.fuegoinfotech.com/webducatel/app-assets/js/search.js'
+      'http://assetsmaster.webducatel.com/app-assets/js/search.js'
     )
     document.body.appendChild(searchJS)
     
@@ -35,7 +35,7 @@ export default {
     let customJS = document.createElement('script')
     customJS.setAttribute(
       'src',
-      'http://assetsmaster.fuegoinfotech.com/webducatel/app-assets/js/custom/custom-script.js'
+      'http://assetsmaster.webducatel.com/app-assets/js/custom/custom-script.js'
     )
     document.body.appendChild(customJS)
     
@@ -43,7 +43,7 @@ export default {
     let customizerJS = document.createElement('script')
     customizerJS.setAttribute(
       'src',
-      'http://assetsmaster.fuegoinfotech.com/webducatel/app-assets/js/scripts/customizer.js'
+      'http://assetsmaster.webducatel.com/app-assets/js/scripts/customizer.js'
     )
     document.body.appendChild(customizerJS)
 
@@ -51,7 +51,7 @@ export default {
     let ModalsJS = document.createElement('script')
     ModalsJS.setAttribute(
       'src',
-      'http://assetsmaster.fuegoinfotech.com/webducatel/app-assets/js/scripts/advance-ui-modals.js'
+      'http://assetsmaster.webducatel.com/app-assets/js/scripts/advance-ui-modals.js'
     )
     document.body.appendChild(ModalsJS)
     
@@ -59,7 +59,7 @@ export default {
     let UsersJS = document.createElement('script')
     UsersJS.setAttribute(
       'src',
-      'http://assetsmaster.fuegoinfotech.com/webducatel/app-assets/js/scripts/page-users.js'
+      'http://assetsmaster.webducatel.com/app-assets/js/scripts/page-users.js'
     )
     document.body.appendChild(UsersJS)
     
@@ -67,7 +67,7 @@ export default {
     let select2JS = document.createElement('script')
     select2JS.setAttribute(
       'src',
-      'http://assetsmaster.fuegoinfotech.com/webducatel/app-assets/vendors/select2/select2.full.min.js'
+      'http://assetsmaster.webducatel.com/app-assets/vendors/select2/select2.full.min.js'
     )
     document.body.appendChild(select2JS)
     
@@ -75,7 +75,7 @@ export default {
     let formEditorJS = document.createElement('script')
     formEditorJS.setAttribute(
       'src',
-      'http://assetsmaster.fuegoinfotech.com/webducatel/app-assets/js/scripts/form-editor.js'
+      'http://assetsmaster.webducatel.com/app-assets/js/scripts/form-editor.js'
     )
     document.body.appendChild(formEditorJS)
     
@@ -83,7 +83,7 @@ export default {
     let AlertJS = document.createElement('script')
     AlertJS.setAttribute(
       'src',
-      'http://assetsmaster.fuegoinfotech.com/webducatel/app-assets/js/scripts/ui-alerts.js'
+      'http://assetsmaster.webducatel.com/app-assets/js/scripts/ui-alerts.js'
     )
     document.body.appendChild(AlertJS)
   },
