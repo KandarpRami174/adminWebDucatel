@@ -73,7 +73,7 @@
                           <tr role="row" v-for="data in subjectData" v-bind:key="data._id">
                             <td>
                               <img
-                                v-bind:src="'http://assetsmaster.fuegoinfotech.com/webducatel/uploadBase/subImages/'+data.subImage"
+                                v-bind:src="'http://assetsmaster.webducatel.com/ducatelassets/subImages/'+data.subImage"
                                 width="150"
                                 style="border-radius: 10px; box-shadow: 2px 3px 4px #c4c4c4;"
                               />
@@ -110,7 +110,7 @@
           </div>
         </div>
       </div>
-      <masterfoot v-bind:class="[isNoData ? fixedFooter : '']"></masterfoot>
+      <masterfoot v-bind:class="[isLowFoot ? fixedFooter : '']"></masterfoot>
     </div>
   </main>
 </template>
@@ -145,12 +145,14 @@ export default {
       subjectData: [],
       isLoading: false,
       isNoData: false,
+      isLowFoot: false,
       fixedFooter: "pos-bottom",
     };
   },
   methods: {
     async getSubjectData() {
       this.isLoading = true;
+      this.isLowFoot = true;
       try {
         this.getSubject = await SubjectAPI.getSubject();
 
@@ -162,10 +164,16 @@ export default {
           console.log(this.subjectData);
 
           if (this.subjectData.length > 0) {
+            if (this.subjectData.length <= 3) {
             setTimeout(() => (this.isLoading = false), 3000);
-          } else {
+            }
+            else if (this.subjectData.length > 3) {
+              setTimeout(() => (this.isLoading = false, this.isLowFoot = false), 3000);
+            }
+          }
+          else {
             setTimeout(
-              () => ((this.isLoading = false), (this.isNoData = true)),
+              () => (this.isLoading = false, this.isNoData = true, this.isLowFoot = true),
               3000
             );
           }
@@ -183,7 +191,7 @@ export default {
     },
     async editLV(id) {
       sessionStorage.setItem("edit_subjetID", id);
-      this.$router.push("addSubject");
+      this.$router.push("updateSubject");
     },
   },
 };
