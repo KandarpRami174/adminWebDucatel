@@ -11,6 +11,11 @@ module.exports = {
   configureWebpack: {
     devtool: "source-map",
   },
+  chainWebpack: config => {
+    config.performance
+      .maxEntrypointSize(400000)
+      .maxAssetSize(400000)
+  },
   publicPath:
     process.env.NODE_ENV === "production"
       ? "/" + process.env.CI_PROJECT_NAME + "/"
